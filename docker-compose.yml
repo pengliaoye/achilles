@@ -1,0 +1,62 @@
+version: '3.7'
+services:
+  redis:
+    image: redis
+  discovery:
+    image: achilles-discovery:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  configserver:
+    image: achilles-config:0.0.1-SNAPSHOT
+    ports:
+      - 8888:8888
+    depends_on:
+      - discovery
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  api-gateway:
+    image: achilles-gateway:0.0.1-SNAPSHOT
+    ports:
+      - 9090:9090
+    depends_on:
+      - configserver
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  app-api:
+    image: achilles-app:0.0.1-SNAPSHOT
+    ports:
+      - 9010:9010
+    depends_on:
+      - configserver
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  admin-api:
+    image: achilles-admin:0.0.1-SNAPSHOT
+    ports:
+      - 9020:9020
+    depends_on:
+      - configserver
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  support-api:
+    image: achilles-support:0.0.1-SNAPSHOT
+    ports:
+      - 9030:9030
+    depends_on:
+      - configserver
+      - redis
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+  content-api:
+    image: achilles-content:0.0.1-SNAPSHOT
+    ports:
+      - 9040:9040
+    depends_on:
+      - configserver
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+networks:
+  default:
+    name: prj_share-network

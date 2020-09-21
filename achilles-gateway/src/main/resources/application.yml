@@ -1,0 +1,59 @@
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9030/oauth2/jwks
+  #          jwk-set-uri: http://localhost:8080/auth/realms/demo/protocol/openid-connect/certs
+  #      client:
+  #        provider:
+  #          keycloak:
+  #            issuer-uri: http://localhost:8080/auth/realms/demo
+  #        registration:
+  #          keycloak:
+  #            client-id: vanilla
+  #            client-secret: 61551403-d343-4ec5-8ac0-258a722b5193
+  cloud:
+    gateway:
+      routes:
+        - id: app-api-route
+          uri: lb://app-api
+          predicates:
+            - Path=/api/app/**
+          filters:
+            - StripPrefix=2
+        #            - TokenRelay=
+        - id: admin-api-route
+          uri: lb://admin-api
+          predicates:
+            - Path=/api/admin/**
+          filters:
+            - StripPrefix=2
+---
+spring:
+  profiles: dev
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9030/oauth2/jwks
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: prod
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://support-api:9030/oauth2/jwks
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/

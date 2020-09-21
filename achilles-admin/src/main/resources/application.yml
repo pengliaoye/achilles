@@ -1,0 +1,31 @@
+server:
+  port: 9020
+  error:
+    include-stacktrace: never
+content-api.url: http://content-api
+spring:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    default-property-inclusion: non_null
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/

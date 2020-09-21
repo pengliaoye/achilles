@@ -1,0 +1,159 @@
+= Server API Documentation
+Liaoye Peng <wjpgy@126.com>
+
+== HTTP Verbs
+
+This application tries to adhere as closely as possible to standard HTTP and
+REST conventions in its use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve resource(s).
+
+| `POST`
+| Used to create a new resource or execute and action.
+
+| `DELETE`
+| Used to delete a resource.
+|===
+
+== HTTP Status Codes
+
+This application tries to adhere as closely as possible to standard HTTP and
+REST conventions in its use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully.
+
+| `201 Created`
+| A new resource has been created successfully..
+
+| `204 No Content`
+| The request completed successfully, but there is no content included in the
+response.
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing
+further information.
+
+| `404 Not Found`
+| The requested resource did not exist.
+|===
+
+== Resources
+
+=== User
+
+==== Send Sms Code
+
+send sms telphone verify code.
+
+[[send-code_curl_request]]
+===== Curl request
+
+include::{snippets}/send-code/curl-request.adoc[]
+
+[[send-code_http_request]]
+===== HTTP request
+
+include::{snippets}/send-code/http-request.adoc[]
+
+[[send-code_httpie_request]]
+===== HTTPie request
+
+include::{snippets}/send-code/httpie-request.adoc[]
+
+[[send-code_http_response]]
+===== HTTP response
+
+include::{snippets}/send-code/http-response.adoc[]
+
+==== Authentication
+
+using `telphone` and `code` for authentication.
+
+[[auth_curl_request]]
+===== Curl request
+
+include::{snippets}/auth/curl-request.adoc[]
+
+[[auth_httpie_request]]
+===== HTTPie request
+
+include::{snippets}/auth/httpie-request.adoc[]
+
+[[auth_http_request]]
+===== HTTP request
+
+include::{snippets}/auth/http-request.adoc[]
+
+[[auth_http_response]]
+===== HTTP response
+
+include::{snippets}/auth/http-response.adoc[]
+=== News
+
+==== Listing all existing News
+
+All existing news can be retrieved with a `GET`
+request on the `/news` resource.
+
+[[list-news_curl_request]]
+===== Curl request
+
+include::{snippets}/list-news/curl-request.adoc[]
+
+[[list-news_httpie_request]]
+===== HTTPie request
+
+include::{snippets}/list-news/httpie-request.adoc[]
+
+[[list-news_http_request]]
+===== HTTP request
+
+include::{snippets}/list-news/http-request.adoc[]
+
+===== Request parameters
+
+include::{snippets}/list-news/request-parameters.adoc[]
+
+===== Response fields
+
+include::{snippets}/list-news/response-fields.adoc[]
+
+[[list-news_http_response]]
+===== HTTP response
+
+include::{snippets}/list-news/http-response.adoc[]
+
+==== Getting a News
+
+An existing news of the news collection can be retrieved with a `GET`
+request on the news `/news/{id}` resource:
+
+[[get-news_curl_request]]
+===== Curl request
+
+include::{snippets}/get-news/curl-request.adoc[]
+
+[[get-news_httpie_request]]
+===== HTTPie request
+
+include::{snippets}/get-news/httpie-request.adoc[]
+
+[[get-news_http_request]]
+===== HTTP request
+
+include::{snippets}/get-news/http-request.adoc[]
+
+[[get-news_http_response]]
+===== HTTP response
+
+The response contains an available news like this:
+
+include::{snippets}/get-news/http-response.adoc[]

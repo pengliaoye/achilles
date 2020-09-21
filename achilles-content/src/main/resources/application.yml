@@ -1,0 +1,36 @@
+server:
+  port: 9040
+spring:
+  profiles:
+    active: dev
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    default-property-inclusion: non_null
+  jpa:
+    show-sql: true
+    properties.hibernate.format_sql: true
+---
+spring:
+  profiles: dev
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/achilles?useSSL=false&serverTimezone=Asia/Shanghai
+#    username: demo_user
+#    password: demo_password
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/example?useSSL=false
+    username: admin
+    password: admin
+  data.elasticsearch.client.reactive.endpoints: elasticsearch:9200
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/

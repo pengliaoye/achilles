@@ -1,0 +1,15 @@
+server:
+  port: 8761
+  shutdown: graceful
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+spring:
+    main:
+      cloud-platform: kubernetes
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

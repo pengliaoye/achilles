@@ -1,0 +1,79 @@
+server.port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/pengliaoye/config-repo.git
+#          uri: git@github.com:pengliaoye/config-repo.git
+#          refreshRate: 60
+#          ignoreLocalSshSettings: true
+#          hostKey: AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+#          hostKeyAlgorithm: ssh-rsa
+#          #basedir: target/config
+#          privateKey: |
+#            -----BEGIN RSA PRIVATE KEY-----
+#            MIIJKQIBAAKCAgEAqd4Uq4JcEU5rdgDDDtciApngdf/2wHunEfCoa7Lc9Lkpj5gu
+#            y7fEvenk4cLu6p9ipR7ghyErrBwTkmqSn6+htY5nFd/HUQGiLLhsbsZGXoqUsR2y
+#            DevUH5GW0bD/XeC/s3wlrehZKm3beLiCv5DZDehks9smYg8OWmiVwUth3AdXE3af
+#            UYvSGF0+pCNxEaYn2MXt0b5qvM4BCMX2WwG/gnW9UxddkBM2pRBZEWcaiDdLX55b
+#            2Pg3fpX6Wi0aYpYlIonh+v3NJCXI2LXzQy7dRLx03x8npz/YZzLomdxtT/SMQq0j
+#            5E+CaFGZ6QRsGKH0IF2O4iYzp0nSbVbxMCmXd+xb8V+95FlKCHhCPQJUGiu9wkhl
+#            RS2VXY7X8lDiqPAVQm7ObWN1JJbugoKoOJvVICj/SSOtZfNTLz8wq+4Q/YogOeaU
+#            GV8wROm9xhqx53SW6cW8Hw2+tc2rFRPapDZ6bnRM3HELT+5G7CfNJoNkGbEeQE6M
+#            zbvp1MKJnnrgUNEJIXpgs0+7PcOEfes2NNGC040NdC0ljag3mq+pqCZKULIAYW7s
+#            KkLIB00sa+8qNVSZnEYFBuPXA6wp9VxCgUf2R/dSEBBfTYX8/kUzQGyJKKotxLyz
+#            BAhA5XZ7Uuu1gcZQDELouhOYZ4z3EeZKRDJrA9hCtLLij3hIC0IRwklBHasCAwEA
+#            AQKCAgEAgUsbWownvbh9zNy5m2MebPJoyggg7dNwkBQobYk/6znAq55/B+qBYrhT
+#            0Y8JQSY99EazScdysVbRguGBZvBM2p9gUWL6F+txYC6jwhFC4JUEpmde7n+w/rJX
+#            JJZfWTpHT7tQBrXSoJvrsFBonJ0IyTA47jkBVyP0ndX7HpxdCRfBLHxeubf+GzNm
+#            CZM8bd2VeMb2xG32Wm1GlkHvyMdk2Ez75PHk8lPdhPgTg06CAGpuAYLMkDImM0C+
+#            xMKN0bpM26QtkFh8O2ZTILglR9605qu3HVleWkwbUDmMmAgSYAhYdivJJO9r6DEs
+#            QBNwn7Mt2TC9H99J86wZ8cV6YVlXAt8qaGyNlUQkYpSy6+shbEIMMW5Lq2lX/rff
+#            FWcPyS/WkPXRsd7tVUDRGmYrW5JmXKDlppG8KC93PM1vyC6unD2YyFf8NbdZOGcd
+#            RvYisG7lwEqmL8NZV5abUhx448mwtViuia1rm0ugOjHbCqsVfCfM1aEgTTKP2WrV
+#            w2xHEy5ohWi6isEGtQX13zjKDyUFlEUJGjhPAbGNly0td7tHcydbWamPF62iR3jx
+#            UwBceARZYUgFMGNMEMLbOOKLV8+ySBtL8z9P/XnGBlYTw1suu5CPlylm4HU7h+zf
+#            ++wNFd7jcDAHu+GzjnDHxjj4EGNEpeIoXHpsCKWDBABUzz42wrECggEBAOJwuWG1
+#            ddWEzzjst7W+Q9A22S+RO8mbbqPUfx4eqc+tAUZOS0iLFlObPdlcohwmrnsj+W4R
+#            JlUS0afnCOVSXHAenHiAdh0nfm6MV+odQPDbUulsKZHB45mYXnINWehjZebB0dua
+#            lsV76yxoc3w4a72Wv3OzXiwdZK7qNtEdNFQWHmulxYf3sXMhWLRwzjsod7UnG/ls
+#            XU7WbCvC1NAaO3T//QHVYa2y5E5HQbWd2Zpmr76P7MY4/TWDYCB12Ngu/oC19cvk
+#            hpPR6HmajPpUP8T+wl+Hg7nxI83vEdAwuyrg7hTlT8nEoQYVnyUYLcXDk1JTBFHX
+#            UJTMv1b39yI/+lMCggEBAMAKyF2+r4dHANdPkHyWntuJmjXauaY5K2jh1CwIDQan
+#            9Y0tSe50Y1nWamPz60qCTwLWEGYjMKEnauJxYt8UNLkG0GG7PDrhbfJ8/7X9MRIY
+#            ABsUWTjgMfD4+QKwaT4xj4Hg8GaEVDoYbm6TMACGHVHN6tyiuhbmAr2mfFw9mDaU
+#            p+A4E1VdJ2zxO/8mIRGW3RhQmfoVqutOjHvHjoHpXzZJSYjtIDPaC9Qi5e38v1M+
+#            YBbzfGQjlzJhMxMpvEGZpNX1Awnm0Tix5wba8/X8ZwncfjrrMAUrkzOMfc8H+dxU
+#            9FtJz7hmNiV2uRXFCnRzC8xZ8Fclk+CDDbOEVhSy1EkCggEBALM1WVH+BdrNOB8q
+#            IR6CDTNNJUfjHjkpfT/FnjEdPXFxz09wCV7JTQswEpvjFx1Gc9JbHz2/7uFnemvy
+#            ifTL4QKPB3DK4i+ioQomojFTo6C7Q3wfMSr9Ev7tOtnyvRQRDoW5ITg2uVpj/zRv
+#            Ge7WzFYIZ07PRxmMzbEtBeMrxM1DkCHL2XAJVPP0ETsFCAKDvXGuGRKmc5ZAVu2v
+#            TTPBfwrSyc7YrGyG5u8Yr+Vnnt72o+IiD9a1JZhjeAFYoxw83QjKeVQ7cVKtztnm
+#            ueooISvsH7LxEgxnztldenCVEJwX1fTNov7hUjr5g7Ec2KTqar69mu6WhFyvSkMv
+#            DfSaQ6cCggEAU8DgHbJaDx9ySHTUyOFPquNaM/6OVOY9/mHvDLz+IVcDCm0j/zEX
+#            W0jd4XWxui8WkmAVitXyEXaFcPiObEf9rmxAWT81R2CleMn3I8GmswNwmF7JgrqU
+#            TUnoH7ocTBmFQtl9PtibezLIhsT+fFwBUXoC4fK+QdpSe6+uMPRT/AndJTaPh/02
+#            gpa62c4hQfCPwFj2rlDg1/rL3ffsONA0zBIuVd9E2hhQbFZD/QTr1Dwx4BCUwX+c
+#            I0as5cCf7+Q4NW/DwX++44EDBsRa/X702SImkz+bE8YrTqIJBE+wMt2CLIYGZ598
+#            Id6jXdEvfBXooVjgLsGeup2tTgt7F0/esQKCAQALQFGPFY+BiR7tZta5AewMHcLS
+#            b15FZkqFv5m8CL2BgR9k28pMC7sFH6BMPtWQCce62g5UNwEG6UckwHiB8LaRW2n5
+#            kYoNL2RqxlXcbD3be5EsVyN2CTUuy2R6Hl62akTvhoxlp30xyxjLZnxjFeQUCbqM
+#            0z7g3ICQ7znhfUeffbFiwoWyaScbS4w7KX4DsZW1KOrS2O2JvDcknYMCD3So7yDr
+#            NIrPWhRuvhyQzaAtuugvJxqV9idC9NS8A6mkTb92f7aIOKrxFKXzbfEmSLqt6M+9
+#            qyZNvj2+OwN9DTCO3gPHpm7sq/NUMIGinZQGbK86hzhG77vptiWQ9W98HO6O
+#            -----END RSA PRIVATE KEY-----
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/

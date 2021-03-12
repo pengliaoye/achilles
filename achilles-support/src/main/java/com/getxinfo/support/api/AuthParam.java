@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class AuthParam {
 
-    private String telphone;
+    private String telephone;
     private String code;
 
 }

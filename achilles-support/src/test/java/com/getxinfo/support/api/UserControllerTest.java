@@ -70,12 +70,12 @@ public class UserControllerTest {
     @Test
     @DisplayName("发送短信验证码")
     void verifySendSmscode() {
-        String telphone = "13312345678";
+        String telephone = "13312345678";
 
         webTestClient
                 .mutateWith(csrf())
                 .get()
-                .uri("/users/smscode?swissNumberStr=" + telphone)
+                .uri("/users/smscode?swissNumberStr=" + telephone)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()
@@ -90,18 +90,18 @@ public class UserControllerTest {
     @Test
     @DisplayName("验证短信验证码")
     void verifyCheckCode() {
-        String telphone = "13312345678";
+        String telephone = "13312345678";
         String code = "123456";
         Long id = 1L;
         User user = new User();
         user.setId(id);
-        given(userRepository.findByTelphone(telphone)).willReturn(user);
-        given(mockedValueOperations.get(Constants.SMS_CODE_PREFIX + telphone)).willReturn(code);
+        given(userRepository.findByTelephone(telephone)).willReturn(user);
+        given(mockedValueOperations.get(Constants.SMS_CODE_PREFIX + telephone)).willReturn(code);
 
         webTestClient
                 .mutateWith(csrf())
                 .get()
-                .uri("/users/auth?telphone=" + telphone + "&code=" + code)
+                .uri("/users/auth?telephone=" + telephone + "&code=" + code)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()
@@ -116,18 +116,18 @@ public class UserControllerTest {
     @Test
     @DisplayName("错误短信验证码")
     void verifyErrorCode() {
-        String telphone = "13312345678";
+        String telephone = "13312345678";
         String code = "123456";
         Long id = 1L;
         User user = new User();
         user.setId(id);
-        given(userRepository.findByTelphone(telphone)).willReturn(user);
-        given(mockedValueOperations.get(Constants.SMS_CODE_PREFIX + telphone)).willReturn("123");
+        given(userRepository.findByTelephone(telephone)).willReturn(user);
+        given(mockedValueOperations.get(Constants.SMS_CODE_PREFIX + telephone)).willReturn("123");
 
         webTestClient
                 .mutateWith(csrf())
                 .get()
-                .uri("/users/auth?telphone=" + telphone + "&code=" + code)
+                .uri("/users/auth?telephone=" + telephone + "&code=" + code)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()

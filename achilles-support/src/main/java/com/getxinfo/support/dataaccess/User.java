@@ -1,5 +1,6 @@
 package com.getxinfo.support.dataaccess;
 
+import com.getxinfo.support.TransitConverter;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,7 +16,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String telphone;
+    private String telephone;
+    @Convert(converter = TransitConverter.class)
+    private String idCard;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

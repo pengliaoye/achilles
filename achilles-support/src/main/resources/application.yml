@@ -2,13 +2,38 @@
 server.port: 9030
 spring:
   profiles:
-    active: dev
+    active: "dev"
   jpa:
     show-sql: true
     properties.hibernate.format_sql: true
+  cloud:
+    vault:
+      uri: https://localhost:8200
+      ssl:
+        trust-store: keystore.jks
+        trust-store-password: changeit
+        trust-store-type: JKS
+      connection-timeout: 5000
+      read-timeout: 15000
+      fail-fast: true
+      token: s.m93xNGftIVavjLs4cVsTnsh3
+      application-name: support-api
+      database:
+        enabled: true
+        role: my-role
+        backend: database
+        username-property: spring.datasource.username
+        password-property: spring.datasource.password
+  config:
+    import: vault://
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: when_authorized
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: "dev"
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://localhost:3306/achilles?useSSL=false&serverTimezone=Asia/Shanghai
@@ -20,7 +45,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: "prod"
   redis.url: redis://redis:6379
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

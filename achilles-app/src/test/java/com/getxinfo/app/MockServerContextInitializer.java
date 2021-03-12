@@ -24,7 +24,7 @@ public class MockServerContextInitializer implements ApplicationContextInitializ
                             .setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                             .setBody("{\"code\":\"00000\",\"data\":{\"code\":\"123\"}}");
                     break;
-                case "/users/auth?telphone=13312345678&code=123":
+                case "/users/auth?telephone=13312345678&code=123":
                     mockResponse = new MockResponse()
                             .setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                             .setBody("{\"code\":\"00000\",\"data\":{\"access_token\":\"123\"}}");

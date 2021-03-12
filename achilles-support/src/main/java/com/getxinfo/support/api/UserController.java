@@ -22,10 +22,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.util.StreamUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -47,7 +44,7 @@ public class UserController {
 
     @GetMapping("smscode")
     public ResponseResult<VerifyCodeResponse> sendSmsVerifyCode(@RequestParam String swissNumberStr) {
-        if (isTelphoneValid(swissNumberStr)) {
+        if (isTelephoneValid(swissNumberStr)) {
             boolean sendInterval = testAndSetInterval(swissNumberStr);
             if (!sendInterval) {
                 ValueOperations<String, String> valOps = redisTemplate.opsForValue();
@@ -73,7 +70,7 @@ public class UserController {
         return within;
     }
 
-    public boolean isTelphoneValid(String swissNumberStr) {
+    public boolean isTelephoneValid(String swissNumberStr) {
         boolean valid = false;
         PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
         try {
@@ -87,17 +84,18 @@ public class UserController {
 
     @GetMapping("auth")
     public Object authentication(AuthParam authParam) throws JOSEException, ParseException, IOException {
-        String swissNumberStr = authParam.getTelphone();
+        String swissNumberStr = authParam.getTelephone();
         String code = authParam.getCode();
         ValueOperations<String, String> valOps = redisTemplate.opsForValue();
         String expectCode = valOps.get(Constants.SMS_CODE_PREFIX + swissNumberStr);
         if (expectCode != null && expectCode.equals(code)) {
             redisTemplate.delete(Constants.SMS_CODE_PREFIX + swissNumberStr);
 
-            User user = userService.findByTelphone(swissNumberStr);
+            User user = userService.findByTelephone(swissNumberStr);
             if (user == null) {
                 User u = new User();
-                u.setTelphone(swissNumberStr);
+                u.setTelephone(swissNumberStr);
+                u.setIdCard("test");
                 user = userService.save(u);
             }
             String uid = String.valueOf(user.getId());

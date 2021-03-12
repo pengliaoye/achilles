@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.3.RELEASE</version>
+        <version>2.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -22,7 +22,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+        <spring-cloud.version>2020.0.1</spring-cloud.version>
     </properties>
 
     <modules>
@@ -44,6 +44,7 @@
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-webtestclient</artifactId>
+            <version>2.0.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,6 +85,14 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -103,7 +112,7 @@
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>2.0.0</version>
+                <version>2.1.0</version>
                 <executions>
                     <execution>
                         <id>generate-docs</id>
@@ -127,13 +136,13 @@
                     <dependency>
                         <groupId>org.springframework.restdocs</groupId>
                         <artifactId>spring-restdocs-asciidoctor</artifactId>
-                        <version>2.0.4.RELEASE</version>
+                        <version>2.0.5.RELEASE</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
@@ -160,7 +169,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.5</version>
+                <version>0.8.6</version>
                 <executions>
                     <execution>
                         <goals>

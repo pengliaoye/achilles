@@ -23,17 +23,17 @@ public class UserHandler {
     }
 
     public Mono<ServerResponse> sendSmsCode(ServerRequest request) {
-        String telphone = request.queryParam("telphone").get();
-        return webClient.get().uri(supportApiUrl + "/users/smscode?swissNumberStr=" + telphone)
+        String telephone = request.queryParam("telephone").get();
+        return webClient.get().uri(supportApiUrl + "/users/smscode?swissNumberStr=" + telephone)
                 .exchange().flatMap(clientResponse -> ServerResponse.status(clientResponse.statusCode())
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(clientResponse.bodyToFlux(DataBuffer.class), DataBuffer.class));
     }
 
     public Mono<ServerResponse> authentication(ServerRequest request) {
-        String telphone = request.queryParam("telphone").get();
+        String telephone = request.queryParam("telephone").get();
         String code = request.queryParam("code").get();
-        return webClient.get().uri(supportApiUrl + "/users/auth?telphone=" + telphone + "&code=" + code)
+        return webClient.get().uri(supportApiUrl + "/users/auth?telephone=" + telephone + "&code=" + code)
                 .exchange().flatMap(clientResponse -> ServerResponse.status(clientResponse.statusCode())
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(clientResponse.bodyToFlux(DataBuffer.class), DataBuffer.class));

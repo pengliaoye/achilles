@@ -1,2 +1,4 @@
 # Project exclude paths
 /report/target/
+.idea
+*.iml

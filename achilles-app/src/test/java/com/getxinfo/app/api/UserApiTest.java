@@ -53,7 +53,7 @@ public class UserApiTest {
     @Test
     public void testSendSmsCode() throws InterruptedException {
 
-        webTestClient.get().uri("/users/smscode?telphone=13312345678")
+        webTestClient.get().uri("/users/smscode?telephone=13312345678")
                 .exchange()
                 .expectStatus()
                 .isOk()
@@ -66,7 +66,7 @@ public class UserApiTest {
     @Test
     public void testAuthentication() throws InterruptedException {
 
-        webTestClient.get().uri("/users/auth?telphone=13312345678&code=123")
+        webTestClient.get().uri("/users/auth?telephone=13312345678&code=123")
                 .exchange()
                 .expectStatus()
                 .isOk()

@@ -8,11 +8,11 @@ CREATE TABLE `content_news` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `system_user` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `telphone` varchar(20) DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+CREATE TABLE system_user (
+  id bigserial primary key,
+  telephone varchar(11) DEFAULT NULL,
+  id_card varchar(61) DEFAULT NULL,
+  created_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+  updated_at timestamptz DEFAULT NULL
 );
 

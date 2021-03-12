@@ -15,8 +15,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User findByTelphone(String telphone) {
-        return userRepository.findByTelphone(telphone);
+    public User findByTelephone(String telephone) {
+        return userRepository.findByTelephone(telephone);
     }
 
     public User save(User user) {

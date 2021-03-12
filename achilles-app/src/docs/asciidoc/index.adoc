@@ -51,7 +51,7 @@ further information.
 
 ==== Send Sms Code
 
-send sms telphone verify code.
+send sms telephone verify code.
 
 [[send-code_curl_request]]
 ===== Curl request
@@ -75,7 +75,7 @@ include::{snippets}/send-code/http-response.adoc[]
 
 ==== Authentication
 
-using `telphone` and `code` for authentication.
+using `telephone` and `code` for authentication.
 
 [[auth_curl_request]]
 ===== Curl request

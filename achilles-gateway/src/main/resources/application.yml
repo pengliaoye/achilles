@@ -1,8 +1,10 @@
 server:
   port: 9090
 spring:
+  application:
+    name: api-gateway
   profiles:
-    active: dev
+    active: "dev"
   security:
     oauth2:
       resourceserver:
@@ -33,9 +35,16 @@ spring:
             - Path=/api/admin/**
           filters:
             - StripPrefix=2
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://129.211.66.112:9411
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: "dev"
   security:
     oauth2:
       resourceserver:
@@ -45,9 +54,13 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: "prod"
   security:
     oauth2:
       resourceserver:

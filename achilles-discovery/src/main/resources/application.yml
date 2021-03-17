@@ -6,6 +6,8 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
 spring:
+    application:
+      name: service-discovery
     main:
       cloud-platform: kubernetes
 management:

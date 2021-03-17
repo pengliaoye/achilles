@@ -1,16 +1,27 @@
 server.port: 9010
+spring:
+  application:
+    name: app-api
+  profiles:
+    active: "dev"
 supoort-api.url: http://support-api
 content-api.url: http://content-api
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: "dev"
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: "prod"
 eureka:
   client:
     serviceUrl:

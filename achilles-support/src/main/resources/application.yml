@@ -1,11 +1,15 @@
 #spring.redis.url: redis://user:password@localhost:6379
 server.port: 9030
 spring:
+  application:
+    name: support-api
   profiles:
     active: "dev"
   jpa:
     show-sql: true
     properties.hibernate.format_sql: true
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
   cloud:
     vault:
       uri: https://localhost:8200
@@ -43,6 +47,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
 ---
 spring:
   config:

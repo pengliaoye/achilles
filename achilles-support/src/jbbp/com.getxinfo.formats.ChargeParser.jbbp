@@ -1,2 +1,10 @@
-ushort start;
+byte [2] start;
 ushort len;
+int dev_no;
+byte command;
+bit:4 gun_no;
+bit:4 sender;
+byte direction;
+byte [253] data;
+byte end;
+int crc;
